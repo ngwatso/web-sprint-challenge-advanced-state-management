@@ -7,6 +7,9 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+axios.get("http://localhost:3333/smurfs").then((res) =>
+	console.log("Smurf Data =====> ", res.data)
+);
 class App extends Component {
 	render() {
 		return (

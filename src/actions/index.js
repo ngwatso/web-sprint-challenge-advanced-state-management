@@ -16,7 +16,7 @@ export const getSmurfData = () => {
 		axios.get(`http:/localhost:3333/smurfs`)
 			.then((res) => {
 				console.log("Smurf data pulled from API =====> ", res);
-				dispatch({ type: FETCH_SMURFS, payload: res });
+				dispatch({ type: FETCH_SMURFS, payload: res.data });
 			})
 			.catch((err) => {
 				console.error("ERROR PULLING DATA", err.message);

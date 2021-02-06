@@ -1,21 +1,77 @@
-import React from 'react';
+import React from "react";
 
 class AddForm extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			smurf: "",
+		};
+	}
 
-    render() {
-        return(<section>
-            <h2>Add Smurf</h2>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
-                </div>
+	handleChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value });
+	};
 
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                <button>Submit Smurf</button>
-            </form>
-        </section>);
-    }
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.setState({ smurf: " " });
+		this.props.addNewSmurf(e, this.state.smurf);
+	};
+
+	render() {
+		return (
+			<section>
+				<h2>Add Smurf</h2>
+				<form onSubmit={this.handleSubmit}>
+					<div className="form-group">
+						<label htmlFor="name">Name:</label>
+						<br />
+						<input
+							onChange={this.handleChange}
+							name="name"
+							id="name"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="position">Position:</label>
+						<br />
+						<input
+							onChange={this.handleChange}
+							name="position"
+							id="position"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="nickname">Nickname:</label>
+						<br />
+						<input
+							onChange={this.handleChange}
+							name="nickname"
+							id="nickname"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="description">Description:</label>
+						<br />
+						<input
+							onChange={this.handleChange}
+							name="description"
+							id="description"
+						/>
+					</div>
+
+					<div
+						data-testid="errorAlert"
+						className="alert alert-danger"
+						role="alert"
+					>
+						Error:{" "}
+					</div>
+					<button>Submit Smurf</button>
+				</form>
+			</section>
+		);
+	}
 }
 
 export default AddForm;
