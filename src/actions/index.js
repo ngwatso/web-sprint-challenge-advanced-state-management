@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 //Task List:
-//1. Add fetch smurfs action: 
+//1. Add fetch smurfs action:
 //              - fetch and return initial list of smurfs
 //              - dispatch actions that indicate if we are waiting for a server response
 //              - dispatch an error text action if an error is returned from the server
@@ -13,3 +13,5 @@ import axios from 'axios';
 //3. Add set error text action:
 //              - return action object setting error text
 //4. Any other actions you deem nessiary to complete application.
+
+hi;
