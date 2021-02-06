@@ -1,9 +1,11 @@
 import axios from "axios";
 
+// ?? Fetch smurf data
 export const START_FETCHING = "START_FETCHING";
 export const FETCH_SMURFS = "FETCH_SMURFS";
 export const FETCH_ERROR = "FETCH_ERROR";
 
+// ?? Post smurf data
 export const ADD_SMURF = "ADD_SMURF";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_ERROR = "ADD_ERROR";
@@ -13,7 +15,7 @@ export const getSmurfData = () => {
 		dispatch({ type: START_FETCHING });
 
 		// ?? Fetch smurf data using axios
-		axios.get(`http:/localhost:3333/smurfs`)
+		axios.get(`http://localhost:3333/smurfs`)
 			.then((res) => {
 				console.log("Smurf data pulled from API =====> ", res);
 				dispatch({ type: FETCH_SMURFS, payload: res.data });
@@ -29,7 +31,7 @@ export const addNewSmurf = (smurfs) => (dispatch) => {
 	dispatch({ type: ADD_SMURF });
 
 	// ?? Post smurf data using axios
-	axios.post(`http:/localhost:3333/smurfs`, smurfs)
+	axios.post(`http://localhost:3333/smurfs`, smurfs)
 		.then((res) => {
 			console.log("ADD_SUCCESS: ", smurfs);
 			dispatch({ type: ADD_SUCCESS });
