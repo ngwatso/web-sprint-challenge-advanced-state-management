@@ -1,20 +1,22 @@
-import React, { createStore, applyMiddleware } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import thunk from "react-thunk";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 import "./index.css";
 import App from "./App";
-
-const reducer = () => {};
-
-const store = createStore(reducer, applyMiddleware(thunk));
+import { smurfReducer } from "./reducers";
 
 const { worker } = require("./mocks/browser");
 worker.start();
 
+// ?? set up state using createStore (apply middleWare used for thunk)
+const store = createStore(smurfReducer, applyMiddleware(thunk));
+
 const rootElement = document.getElementById("root");
 
+// ?? Wrap App in Provider, use store for props
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

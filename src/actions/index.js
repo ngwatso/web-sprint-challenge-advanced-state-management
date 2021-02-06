@@ -1,5 +1,26 @@
 import axios from "axios";
 
+export const FETCH_SMURFS = "FETCH_SMURFS";
+export const ADD_SMURF = "ADD_SMURF";
+export const ERROR_MESSAGE = "ERROR_MESSAGE";
+
+export const getSmurfData = () => {
+	return (dispatch) => {
+		dispatch({ type: FETCH_SMURFS });
+
+		// ?? Fetch smurf data using axios
+		axios.get(`http:/localhost:3333/smurfs`)
+			.then((res) => {
+				console.log("Smurf data pulled from API =====> ", res);
+				dispatch({ type: FETCH_SMURFS, payload: res });
+			})
+			.catch((err) => {
+				console.error("ERROR PULLING DATA", err.message);
+				dispatch({ type: ERROR_MESSAGE, payload: err.message });
+			});
+	};
+};
+
 //Task List:
 //1. Add fetch smurfs action:
 //              - fetch and return initial list of smurfs

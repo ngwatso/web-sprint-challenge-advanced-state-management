@@ -1,14 +1,27 @@
+import { FETCH_SMURFS } from "../actions";
 
 export const initialState = {
-}
+	smurfs: [],
+	isLoading: false,
+	error: "",
+};
 
-const reducer = ()=>{
-}
-
-export default reducer;
+export const smurfReducer = (state = initialState, action) => {
+	switch (action.type) {
+		case FETCH_SMURFS: {
+			return {
+				...state,
+				isLoading: true,
+				error: "",
+			};
+		}
+		default:
+			return state;
+	}
+};
 
 //Task List:
-//1. Add in the initialState needed to hold: 
+//1. Add in the initialState needed to hold:
 //      - an array of smurfs
 //      - a boolean indicating if the app is loading
 //      - error text
