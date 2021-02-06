@@ -1,12 +1,13 @@
 import axios from "axios";
 
+export const START_FETCHING = "START_FETCHING";
 export const FETCH_SMURFS = "FETCH_SMURFS";
 export const ADD_SMURF = "ADD_SMURF";
-export const ERROR_MESSAGE = "ERROR_MESSAGE";
+export const FETCH_ERROR = "FETCH_ERROR";
 
 export const getSmurfData = () => {
 	return (dispatch) => {
-		dispatch({ type: FETCH_SMURFS });
+		dispatch({ type: START_FETCHING });
 
 		// ?? Fetch smurf data using axios
 		axios.get(`http:/localhost:3333/smurfs`)
@@ -16,7 +17,7 @@ export const getSmurfData = () => {
 			})
 			.catch((err) => {
 				console.error("ERROR PULLING DATA", err.message);
-				dispatch({ type: ERROR_MESSAGE, payload: err.message });
+				dispatch({ type: FETCH_ERROR, payload: err.message });
 			});
 	};
 };
