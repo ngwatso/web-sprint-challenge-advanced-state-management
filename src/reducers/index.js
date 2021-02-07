@@ -25,7 +25,7 @@ export const smurfReducer = (state = initialState, action) => {
 		case FETCH_SMURFS: {
 			return {
 				...state,
-				smurfs: action.payload,
+				smurfs: [...state.smurfs, ...action.payload],
 				isLoading: false,
 			};
 		}
@@ -39,13 +39,13 @@ export const smurfReducer = (state = initialState, action) => {
 		case ADD_SMURF: {
 			return {
 				...state,
-				isLoading: false,
+				isLoading: true,
 			};
 		}
 		case ADD_SUCCESS: {
 			return {
 				...state,
-				smurfs: action.payload,
+				smurfs: [...state.smurfs, ...action.payload],
 				isLoading: false,
 			};
 		}

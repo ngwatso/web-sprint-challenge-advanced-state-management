@@ -27,21 +27,22 @@ export const getSmurfData = () => {
 	};
 };
 
-export const addNewSmurf = (smurfs) => (dispatch) => {
-	dispatch({ type: ADD_SMURF });
+export const addNewSmurf = (smurf) => {
+	return (dispatch) => {
+		dispatch({ type: ADD_SMURF });
 
-	// ?? Post smurf data using axios
-	axios.post(`http://localhost:3333/smurfs`, smurfs)
-		.then((res) => {
-			console.log("ADD_SUCCESS: ", smurfs);
-			dispatch({ type: ADD_SUCCESS });
-		})
-		.catch((err) => {
-			console.error("ERROR SENDING DATA", err.message);
-			dispatch({ type: ADD_ERROR, payload: err.message });
-		});
+		// ?? Post smurf data using axios
+		axios.post(`http://localhost:3333/smurfs`, smurf)
+			.then((res) => {
+				console.log("ADD_SUCCESS: ", smurf);
+				dispatch({ type: ADD_SUCCESS, payload: res.data });
+			})
+			.catch((err) => {
+				console.error("ERROR SENDING DATA", err.message);
+				dispatch({ type: ADD_ERROR, payload: err.message });
+			});
+	};
 };
-
 //Task List:
 // * 1. Add fetch smurfs action:
 // *             - fetch and return initial list of smurfs
