@@ -1,14 +1,73 @@
-import React from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export class SmurfDisplay extends React.Component {
-    render() {
-        return(<div>
-            
-        </div>)
-    }
+import Smurf from "./Smurf";
+import { getSmurfData } from "../actions";
+
+// const { smurfs } = this.data;
+export class SmurfDisplay extends Component {
+	constructor() {
+		super();
+		this.state = {
+			smurfs: this.smurfs,
+			isLoading: this.isLoading,
+			didAddSmurf: this.didAddSmurf,
+			error: this.error,
+		};
+	}
+
+	// const smurfs = this.props.smurfs
+
+	componentDidMount() {
+		// const handleGetData = (e) => {
+		// 	e.preventDefault();
+		// 	getSmurfData();
+		// };
+
+		const smurfVillage = getSmurfData;
+
+		console.log("smurfVillage =====> ", smurfVillage);
+
+		if (this.props.isLoading) {
+			return <h2> Fetching data, one moment...</h2>;
+		}
+	}
+
+	render() {
+		console.log("Props =====>", this.props);
+		return (
+			<div className="smurf-village">
+				<h1>Smurf Village</h1>
+				{/* <ul>
+					{smurfVillage.map((smurf) => {
+						return (
+							<Smurf
+								name={smurf.name}
+								position={smurf.position}
+								nickname={smurf.nickname}
+								description={smurf.description}
+								key={smurf.key}
+							/>
+						);
+					})}
+				</ul> */}
+			</div>
+		);
+	}
 }
 
-export default SmurfDisplay;
+const mapStateToProps = (state) => {
+	return {
+		smurfs: state.smurfs,
+		isLoading: state.isLoading,
+		didAddSmurf: state.didAddSmurf,
+		error: state.error,
+	};
+};
+
+// export default SmurfDisplay;
+
+export default connect(mapStateToProps, { getSmurfData })(SmurfDisplay);
 
 //Task List:
 //1. Import in all needed components and library methods.

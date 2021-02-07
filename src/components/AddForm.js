@@ -6,17 +6,25 @@ class AddForm extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			smurf: "",
+			name: "",
+			position: "",
+			nickname: "",
+			description: "",
 		};
 	}
 
 	handleChange = (e) => {
-		this.setState({ ...this.state, [e.target.name]: e.target.value });
+		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.setState({ smurf: " " });
+		this.setState({
+			name: "",
+			position: "",
+			nickname: "",
+			description: "",
+		});
 		this.props.addNewSmurf(e, this.state.smurf);
 	};
 
@@ -67,7 +75,7 @@ class AddForm extends React.Component {
 						className="alert alert-danger"
 						role="alert"
 					>
-						Error:{" "}
+						Error:{this.props.error}
 					</div>
 					<button>Submit Smurf</button>
 				</form>
@@ -97,6 +105,6 @@ export default connect(mapStateToProps, { addNewSmurf })(AddForm);
 // *     - MAKE SURE TO CORRECTLY CONNECT LABELS TO YOUR FORM INPUTS. USE THE PATERN OF SHOWN FOR NAME.
 // * 5. Build eventhandler and listener needed to change the state.
 // * 6. Build eventhandler and listener needed to submit a new smurf and dispatch it's assosated action.
-//7. Ensure that the included alert code only displays when error text is passed in from redux.
+// * 7. Ensure that the included alert code only displays when error text is passed in from redux.
 // * 4. DO NOT DELETE THE data-testid FIELD FROM THE ERROR ALERT! This is used for sprint grading.
 //8. Style as necessary.

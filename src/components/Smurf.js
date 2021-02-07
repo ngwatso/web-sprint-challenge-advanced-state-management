@@ -6,7 +6,15 @@ class Smurf extends React.Component {
 
 		return (
 			<div data-testid="smurf" className="card">
-				{smurf.map((smurf) => {
+				return (
+				<div className="smurf-card">
+					<h2> {smurf.name}</h2>
+					<h3>{smurf.position}</h3>
+					<h3>{smurf.nickname}</h3>
+					<h3>{smurf.description}</h3>
+				</div>
+				)
+				{/* {smurf.map((smurf) => {
 					return (
 						<div key={smurf.id} className="smurf-container">
 							<div className="smurf-name">
@@ -26,7 +34,7 @@ class Smurf extends React.Component {
 							</div>
 						</div>
 					);
-				})}
+				})} */}
 			</div>
 		);
 	}

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import AddForm from "./components/AddForm";
 import SmurfDisplay from "./components/SmurfDisplay";
 import axios from "axios";
+// import { getSmurfData } from "./actions";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -13,6 +14,7 @@ axios.get("http://localhost:3333/smurfs").then((res) =>
 );
 class App extends Component {
 	render() {
+		console.log("App.js state =====>", this.state);
 		return (
 			<div className="App">
 				<nav className="navbar navbar-dark bg-primary">
@@ -20,7 +22,7 @@ class App extends Component {
 				</nav>
 				<main>
 					<AddForm />
-					<SmurfDisplay />
+					<SmurfDisplay smurfs={this.smurfs} />
 				</main>
 			</div>
 		);
