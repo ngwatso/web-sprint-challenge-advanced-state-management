@@ -24,7 +24,7 @@ export class SmurfDisplay extends Component {
 		// 	getSmurfData();
 		// };
 
-		const smurfVillage = getSmurfData;
+		const smurfVillage = this.smurfs;
 
 		console.log("smurfVillage =====> ", smurfVillage);
 
@@ -37,8 +37,8 @@ export class SmurfDisplay extends Component {
 		console.log("Props =====>", this.props);
 		return (
 			<div className="smurf-village">
-				<h1>Smurf Village</h1>
-				{/* <ul>
+				{/* <h1>Smurf Village</h1>
+				<ul>
 					{smurfVillage.map((smurf) => {
 						return (
 							<Smurf

@@ -7,8 +7,8 @@ export const FETCH_ERROR = "FETCH_ERROR";
 
 // ?? Post smurf data
 export const ADD_SMURF = "ADD_SMURF";
-// export const ADD_SUCCESS = "ADD_SUCCESS";
-// export const ADD_ERROR = "ADD_ERROR";
+export const ADD_SUCCESS = "ADD_SUCCESS";
+export const ADD_ERROR = "ADD_ERROR";
 
 export const getSmurfData = () => {
 	return (dispatch) => {
@@ -35,11 +35,11 @@ export const addNewSmurf = (smurf) => {
 		axios.post(`http://localhost:3333/smurfs`, smurf)
 			.then((res) => {
 				console.log("ADD_SUCCESS: ", smurf);
-				dispatch({ type: FETCH_SMURFS, payload: res.data });
+				dispatch({ type: ADD_SUCCESS, payload: res.data });
 			})
 			.catch((err) => {
 				console.error("ERROR SENDING DATA", err.message);
-				dispatch({ type: FETCH_ERROR, payload: err.message });
+				dispatch({ type: ADD_ERROR, payload: err.message });
 			});
 	};
 };

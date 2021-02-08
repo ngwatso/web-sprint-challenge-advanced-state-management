@@ -3,8 +3,8 @@ import {
 	FETCH_SMURFS,
 	FETCH_ERROR,
 	ADD_SMURF,
-	// ADD_SUCCESS,
-	// ADD_ERROR,
+	ADD_SUCCESS,
+	ADD_ERROR,
 } from "../actions";
 
 export const initialState = {
@@ -26,8 +26,8 @@ export const smurfReducer = (state = initialState, action) => {
 		case FETCH_SMURFS: {
 			return {
 				...state,
-				smurfs: [...state.smurfs, ...action.payload],
 				isLoading: false,
+				smurfs: action.payload,
 			};
 		}
 		case FETCH_ERROR: {
@@ -41,6 +41,22 @@ export const smurfReducer = (state = initialState, action) => {
 			return {
 				...state,
 				didAddSmurf: true,
+				smurfs: [...state.smurfs],
+			};
+		}
+		case ADD_SUCCESS: {
+			return {
+				...state,
+				isLoading: false,
+				smurfs: [...state.smurfs],
+				error: "",
+			};
+		}
+		case ADD_ERROR: {
+			return {
+				...state,
+				isLoading: false,
+				error: action.payload,
 			};
 		}
 
