@@ -14,18 +14,20 @@ class AddForm extends React.Component {
 	}
 
 	handleChange = (e) => {
-		this.setState({ [e.target.name]: e.target.value });
+		this.setState({ ...this.state, [e.target.name]: e.target.value });
 	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+
+		this.props.addNewSmurf(this.state);
+
 		this.setState({
 			name: "",
 			position: "",
 			nickname: "",
 			description: "",
 		});
-		this.props.addNewSmurf(e, this.state.smurf);
 	};
 
 	render() {
@@ -37,6 +39,7 @@ class AddForm extends React.Component {
 						<label htmlFor="name">Name:</label>
 						<br />
 						<input
+							value={this.state.name}
 							onChange={this.handleChange}
 							name="name"
 							id="name"
@@ -46,6 +49,7 @@ class AddForm extends React.Component {
 						<label htmlFor="position">Position:</label>
 						<br />
 						<input
+							value={this.state.position}
 							onChange={this.handleChange}
 							name="position"
 							id="position"
@@ -55,6 +59,7 @@ class AddForm extends React.Component {
 						<label htmlFor="nickname">Nickname:</label>
 						<br />
 						<input
+							value={this.state.nickname}
 							onChange={this.handleChange}
 							name="nickname"
 							id="nickname"
@@ -64,6 +69,7 @@ class AddForm extends React.Component {
 						<label htmlFor="description">Description:</label>
 						<br />
 						<input
+							value={this.state.description}
 							onChange={this.handleChange}
 							name="description"
 							id="description"

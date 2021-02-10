@@ -2,19 +2,21 @@ import React from "react";
 
 class Smurf extends React.Component {
 	render() {
-		const { smurf } = this.props;
-
+		const smurfs = Object.entries(this.props);
+		const village = smurfs[0];
+		console.log("smurf.js village =====> ", village);
+		console.log("smurf.js smurf =====> ", smurfs);
 		return (
 			<div data-testid="smurf" className="card">
-				return (
-				<div className="smurf-card">
+				{/* return ( */}
+				{/* <div className="smurf-card">
 					<h2> {smurf.name}</h2>
 					<h3>{smurf.position}</h3>
 					<h3>{smurf.nickname}</h3>
 					<h3>{smurf.description}</h3>
-				</div>
-				)
-				{/* {smurf.map((smurf) => {
+				</div> */}
+				{/* ) */}
+				{village.map((smurf) => {
 					return (
 						<div key={smurf.id} className="smurf-container">
 							<div className="smurf-name">
@@ -34,7 +36,7 @@ class Smurf extends React.Component {
 							</div>
 						</div>
 					);
-				})} */}
+				})}
 			</div>
 		);
 	}

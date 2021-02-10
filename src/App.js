@@ -10,16 +10,17 @@ import { getSmurfData } from "./actions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-axios.get("http://localhost:3333/smurfs").then((res) =>
-	console.log("Smurf Data =====> ", res.data)
-);
+// axios.get("http://localhost:3333/smurfs").then((res) =>
+// 	console.log("Smurf Data =====> ", res.data)
+// );
 class App extends Component {
 	componentDidMount() {
 		console.log(getSmurfData);
-		return getSmurfData();
+		this.props.getSmurfData();
 	}
 
 	render() {
+		console.log("props", this.props);
 		return (
 			<div className="App">
 				<nav className="navbar navbar-dark bg-primary">

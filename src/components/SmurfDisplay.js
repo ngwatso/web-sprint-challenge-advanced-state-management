@@ -24,9 +24,9 @@ export class SmurfDisplay extends Component {
 		// 	getSmurfData();
 		// };
 
-		const smurfVillage = this.smurfs;
+		// const smurfVillage = this.state;
 
-		console.log("smurfVillage =====> ", smurfVillage);
+		// console.log("smurfVillage =====> ", this.props);
 
 		if (this.props.isLoading) {
 			return <h2> Fetching data, one moment...</h2>;
@@ -34,23 +34,14 @@ export class SmurfDisplay extends Component {
 	}
 
 	render() {
-		console.log("Props =====>", this.props);
+		const smurfVillage = this.props;
+		console.log("smurfVillage =====>", smurfVillage);
 		return (
 			<div className="smurf-village">
-				{/* <h1>Smurf Village</h1>
+				<h1>Smurf Village</h1>
 				<ul>
-					{smurfVillage.map((smurf) => {
-						return (
-							<Smurf
-								name={smurf.name}
-								position={smurf.position}
-								nickname={smurf.nickname}
-								description={smurf.description}
-								key={smurf.key}
-							/>
-						);
-					})}
-				</ul> */}
+					<Smurf smurfVillage={smurfVillage} />;
+				</ul>
 			</div>
 		);
 	}
